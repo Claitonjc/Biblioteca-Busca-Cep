@@ -2,14 +2,17 @@
 
 namespace Clait\DigitalCep;
 
+use Clait\DigitalCep\Contract\SearchContractInterface;
+
 class Search {
-    private $url = "https://viacep.com.br/ws/";
+    private $search;
+
+    public function __construct(SearchContractInterface $search)
+    {
+        $this->search = $search;       
+    }
 
     public function getAdressFromZipCode(string $zipCode): array {
-        $zipCode = preg_replace('/[^0-9]/im', '', $zipCode);
-
-        $get = file_get_contents($this->url . $zipCode . "/json");
-
-        return (array) json_decode($get);
+        return $this->search->getAdressFromZipCode($zipCode);
     }
 }
