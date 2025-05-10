@@ -25,6 +25,6 @@ print_r($resultBrasil);
 $openCepSerach = new SearchOpenCep;
 $searchOpenCep = new Search($openCepSerach);
 
-$resultOpen = $searchOpenCep->getAdressFromZipCode('88900150');
+$resultOpen = $searchOpenCep->getAdressFromZipCode('88900000');
 
 print_r($resultOpen);
